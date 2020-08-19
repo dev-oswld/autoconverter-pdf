@@ -16,3 +16,4 @@ visio.AlertResponse = 7
 document.ExportAsFixedFormat(1, output, 1, 0)
 document.Close()
 ```
+- [Docs pywin32](http://timgolden.me.uk/pywin32-docs/contents.html)
