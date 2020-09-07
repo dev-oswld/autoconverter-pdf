@@ -1,6 +1,11 @@
 # Testing
 *.vsdx
 *.pdf
+*.pptx
+*.ppt
 
 # Settings
 .vscode
+
+# My own
+notes.txt
