@@ -1,8 +1,6 @@
 import win32com.client
 import pathlib
-import shutil
 import sys
-import os
 
 
 def main():
@@ -10,14 +8,12 @@ def main():
         print("¡¡Es necesario ingresar la ruta de la carpeta como argumento!!")
         sys.exit(1)
 
-    # Open application
+    # Objeto para la instancia
     visio = win32com.client.Dispatch("Visio.Application")
-
     visio.AlertResponse = 7
-
     main_dir = pathlib.Path(sys.argv[1])
 
-    # All MS Visio documents
+    # Enlista todos los documentos de MS Visio
     files = list(main_dir.glob("*.vsdx"))
     print("\n| Total | Archivo")
     for i, path in enumerate(files, start=1):
@@ -26,20 +22,6 @@ def main():
         if output.exists():
             continue
         convert(visio, path, output)
-
-    """
-    # TO-DO
-    main_dir = os.listdir("C:\\Users\\O.Tavares-ext\\Desktop\\VisioAPDF")
-    output_f = "C:\\Users\\O.Tavares-ext\\Desktop\\New folder"
-
-    print("")
-    for files in main_dir:
-        if files.endswith(".pdf"):
-            print("Archivo con exito: " + files)
-            shutil.move(files, output_f)
-
-    print("\nProceso completado")
-    """
 
 
 def convert(visio, path, output):
