@@ -1,3 +1,5 @@
+from tkinter import messagebox 
+import tkinter.font as tkFont
 import win32com.client
 import tkinter as tk
 import pathlib
@@ -25,6 +27,8 @@ def ppoint():
         if output.exists():
             continue
         convertppoint(powerpoint, path, output)
+    # TO-DO
+    messagebox.showinfo("showinfo", "Proceso exitoso") 
 
 def visio():
 	# Objeto para la instancia
@@ -50,16 +54,20 @@ def convertvisio(visio, path, output):
 def main():
     # Instancias a mostrar
     ventana = tk.Tk()
-    txt1 = tk.Label(text="Convertidor de archivos a PDF")
+    ventana.geometry("450x250")
+    ventana.title("Creado por Oswaldo Tavares")
+    estilo = tkFont.Font(family="Arial", size=20)
+
+    txt1 = tk.Label(text="Convertidor de archivos\n", font=estilo, fg="orange")
 
     # Botones
-    btn_visio = tk.Button(text="Convertir archivos de MS Visio", command=visio)
-    btn_ppoint = tk.Button(text="Convertir archivos de MS Power Point", command=ppoint)
+    btn_visio = tk.Button(text="Visio a PDF", font=estilo, command=visio)
+    btn_ppoint = tk.Button(text="Power Point a PDF", font=estilo, command=ppoint)
 
     # Todo junto para ser mostrado
     txt1.pack()
-    btn_visio.pack()
-    btn_ppoint.pack()
+    btn_visio.pack() # side=tk.LEFT
+    btn_ppoint.pack() # width=50
     ventana.mainloop()
 
 if __name__ == "__main__":
